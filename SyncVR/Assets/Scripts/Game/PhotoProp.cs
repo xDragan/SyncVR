@@ -34,8 +34,8 @@ namespace PhotoGame
             //var camTrans = Camera.main.transform;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
             RaycastHit hit;
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) , Color.black,Mathf.Infinity);
+            
+            Debug.DrawRay(ray.origin, ray.direction, Color.black);
 
             if (Physics.Raycast(ray, out hit))
             {
@@ -52,7 +52,10 @@ namespace PhotoGame
 
         protected virtual void Appear() { }
 
+        private void OnDisable()
+        {
+            cc.UnUse(animal);
+        }
 
-        
     }
 }

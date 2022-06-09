@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7068369237748402154}
   - component: {fileID: 7068369237748402155}
   - component: {fileID: 1910542468992799375}
+  - component: {fileID: 3178936286915823852}
   m_Layer: 5
   m_Name: Photo
   m_TagString: Untagged
@@ -96,6 +97,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3178936286915823852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068369237748402157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0fe7617d5a90842865984883c95c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7068369237855537470
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,11 +22,13 @@ namespace PhotoGame
             while(t < 1f)
             {
                 transform.position = Vector3.Lerp(startPos, endPos, t);
+                transform.localScale = Vector3.Lerp(startSize, endSize, t);
 
                 t += Time.deltaTime;
                 yield return null;
             }
         }
+
 
 
     }

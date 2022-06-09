@@ -45,7 +45,9 @@ namespace PhotoGame
 
         public bool CanPhoto(PhotoProp.Type anim)
         {
-            Debug.Log("CAN PHOTO, ANIMAL: " + anim);
+            if((int)anim == animCount)
+                Debug.Log("CAN PHOTO, ANIMAL: " + anim);
+
             return (int)anim == animCount; //not the prettiest way
         }
 
@@ -72,8 +74,7 @@ namespace PhotoGame
         {
             for (int i = 0; i < targetAnimal.transform.childCount; i++)
             {
-                //if (targetAnimal.transform.GetChild(i).gameObject.CompareTag("Player"))
-                    targetAnimal.transform.GetChild(i).gameObject.SetActive(false);
+                targetAnimal.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
 
@@ -90,10 +91,22 @@ namespace PhotoGame
 
         public void AnimalPhoto(Texture2D img)
         {
-            var go = Instantiate(photoPrefab, Input.mousePosition, Quaternion.identity);
+            var go = Instantiate(photoPrefab, Input.mousePosition, Quaternion.identity, canvas.transform);
 
+            Debug.Log("image" + img);
             RawImage rImg = go.GetComponentInChildren<RawImage>();
             rImg.texture = img;
+        }
+        public void UnUse(PhotoProp.Type unUse)
+        {
+
+            for (int i = 0; i < animals.Length; i++)
+            {
+                if (animals[i].animType == unUse)
+                {
+                    animals[i].inUse = false;
+                }
+            }
         }
 
         Animal GetAnimal()
