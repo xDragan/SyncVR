@@ -6,7 +6,7 @@ namespace PhotoGame
 {
 	public class PhotoProp : MonoBehaviour
 	{
-		public enum Type {None = -1,Crane, Dog, Dragon, Goat, Horse, Monkey, Ox, Pig, Rabbit, Rat, Rooster, Snake, Tiger};
+		public enum Type {None = -1, Dog, Dragon, Horse, Ox, Rat, Tiger};
 
 		public Type animal;
 
@@ -31,15 +31,21 @@ namespace PhotoGame
 
         private void ShootRay(Vector3 mousePos)
         {
+            //var camTrans = Camera.main.transform;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
             RaycastHit hit;
 
-            if(Physics.Raycast(ray,out hit))
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) , Color.black,Mathf.Infinity);
+
+            if (Physics.Raycast(ray, out hit))
             {
                 if(hit.transform.gameObject.CompareTag("Animal"))
                 {
-                    Debug.Log("PhotoAnimal");
-                    cc.safariCam.GetComponent<SafariCapture>().SetPhoto();
+                    Debug.Log("AnimalDetected");
+                    if(cc.CanPhoto(animal))
+                    {
+                        cc.safariCam.GetComponent<SafariCapture>().SetPhoto();
+                    }
                 }
             }
         }

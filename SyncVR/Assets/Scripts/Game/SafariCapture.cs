@@ -23,17 +23,18 @@ namespace PhotoGame
             var cam = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             cam.z = -10;
             cc.safariCam.transform.position = cam;
-            FixPos();
+            //FixPos();
             StartCoroutine(Photo(cam));
             Capture("SafariPhoto_" + ammount++.ToString() + ".png", this.cam);
-            //cc.SetAnimalToShoot();
+            cc.SetAnimalToShoot();
         }
 
         IEnumerator Photo(Vector3 pos)
         {
             yield return new WaitForSeconds(1f);
-            //Main.Instance.OnAnswerGoodLevel(cc);
-            //Wallet.instance.StarsExplosion(60, pos);
+
+            //Sound 
+            //Particles
         }
 
         void FixPos()
@@ -79,11 +80,10 @@ namespace PhotoGame
 
             byte[] bytes = image.EncodeToPNG();
 
-            string path = Application.persistentDataPath + Path.DirectorySeparatorChar + name;//"Missions" + Path.DirectorySeparatorChar + "SafariCaptures" + Path.DirectorySeparatorChar + name;
+            string path = Application.persistentDataPath + Path.DirectorySeparatorChar + name;
             File.WriteAllBytes(path, bytes);
 
-            //cc.AnimalPhoto(image);
-            //Destroy(image);
+            cc.AnimalPhoto(image);
         }
     }
 }

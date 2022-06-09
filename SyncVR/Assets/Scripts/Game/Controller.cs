@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using Random = UnityEngine.Random;
 
@@ -24,7 +25,7 @@ namespace PhotoGame
 
         public Camera safariCam;
 
-        public GameObject photoPrefab, canvas, hexAnimal, photos;
+        public GameObject photoPrefab, canvas, animalFind, album;
 
         [Header("Animal to photo")]
         public GameObject targetAnimal;
@@ -32,6 +33,8 @@ namespace PhotoGame
         private void Awake()
         {
             SafariCapture.cc = this;
+            PhotoProp.cc = this;
+            PhotoCollect.cc = this;
         }
 
         private void Start()
@@ -40,12 +43,13 @@ namespace PhotoGame
             StartCoroutine(SpawnAnimal());
         }
 
-        private void Update()
+        public bool CanPhoto(PhotoProp.Type anim)
         {
-            Debug.Log("animal length: " + animals.Length);
+            Debug.Log("CAN PHOTO, ANIMAL: " + anim);
+            return (int)anim == animCount; //not the prettiest way
         }
 
-        private void SetAnimalToShoot()
+        public void SetAnimalToShoot()
         {
             if (animCount >= animals.Length)
                 return;
@@ -58,7 +62,7 @@ namespace PhotoGame
 
         private void CheckEnd()
         {
-            if(animCount == animals.Length)
+            if(animCount == animals.Length - 1)
             {
                 //END
             }
@@ -68,7 +72,7 @@ namespace PhotoGame
         {
             for (int i = 0; i < targetAnimal.transform.childCount; i++)
             {
-                if (targetAnimal.transform.GetChild(i).gameObject.CompareTag("Player"))
+                //if (targetAnimal.transform.GetChild(i).gameObject.CompareTag("Player"))
                     targetAnimal.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
@@ -82,6 +86,14 @@ namespace PhotoGame
                 var go = Instantiate(tmp.animal[Random.Range(0, 2)]);
             }
             StartCoroutine(SpawnAnimal());
+        }
+
+        public void AnimalPhoto(Texture2D img)
+        {
+            var go = Instantiate(photoPrefab, Input.mousePosition, Quaternion.identity);
+
+            RawImage rImg = go.GetComponentInChildren<RawImage>();
+            rImg.texture = img;
         }
 
         Animal GetAnimal()

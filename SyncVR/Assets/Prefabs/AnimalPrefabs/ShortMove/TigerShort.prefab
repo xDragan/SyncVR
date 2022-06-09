@@ -108,6 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9672b4f826a0114ab2d17fb9cbd3c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animal: 12
+  animal: 5
   time: 4
   height: 0.2

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d42c955d3799e94c96b6bfe83e65d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animal: 1
+  animal: 0
   time: 10
   finalPos: {x: 2, y: -3.6, z: -8.681}
 --- !u!135 &8425149544171606365
