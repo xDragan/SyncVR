@@ -25,7 +25,7 @@ namespace PhotoGame
 
         public Camera safariCam;
 
-        public GameObject photoPrefab, canvas, animalFind, album;
+        public GameObject photoPrefab, canvas, animalFind, album, win;
 
         [Header("Animal to photo")]
         public GameObject targetAnimal;
@@ -66,7 +66,9 @@ namespace PhotoGame
         {
             if(animCount == animals.Length - 1)
             {
-                //END
+                Debug.LogError("GAME FINISHED");
+                win.SetActive(true);
+                Time.timeScale = 0.5f;
             }
         }
 

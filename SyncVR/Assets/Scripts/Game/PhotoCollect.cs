@@ -8,6 +8,7 @@ namespace PhotoGame
     public class PhotoCollect : MonoBehaviour
     {
         public static Controller cc;
+
         IEnumerator Start()
         {
             yield return new WaitForSeconds(1.5f);
@@ -27,6 +28,10 @@ namespace PhotoGame
                 t += Time.deltaTime;
                 yield return null;
             }
+
+            gameObject.SetActive(false);
+            cc.album.GetComponent<Animator>().Play("Album");
+
         }
 
 
