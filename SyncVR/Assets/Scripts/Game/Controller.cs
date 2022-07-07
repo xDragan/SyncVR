@@ -43,6 +43,15 @@ namespace PhotoGame
             StartCoroutine(SpawnAnimal());
         }
 
+        private void Update()
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Screen Point: " + Input.mousePosition);
+                Debug.Log("Screen To Viewport: " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
+        }
+
         public bool CanPhoto(PhotoProp.Type anim)
         {
             if((int)anim == animCount)

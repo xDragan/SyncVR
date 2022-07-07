@@ -23,6 +23,7 @@ namespace PhotoGame
             var cam = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             cam.z = -10;
             cc.safariCam.transform.position = cam;
+            cc.safariCam.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             //FixPos();
             StartCoroutine(Photo(cam));
             Capture("SafariPhoto_" + ammount++.ToString() + ".png", this.cam);
